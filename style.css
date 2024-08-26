@@ -32,10 +32,10 @@ body {
     text-align: center;
     border-radius: 4%;
     overflow: hidden;
-    background: radial-gradient(circle farthest-side at 50% 50% ,rgb(239, 205, 142),rgb(241, 199, 119) ,rgb(225, 176, 85));
-   background-blend-mode: luminosity;
-   color: #222;
-   min-height: 75vh;
+    background: radial-gradient(circle farthest-side at 50% 50% ,#efcd8e,rgb(241, 199, 119) ,rgb(225, 176, 85));
+    background-blend-mode: luminosity;
+    color: #222;
+    min-height: 75vh;
 
 }
 

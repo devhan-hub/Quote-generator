@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="output.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Quote Generator</title>
+</head>
+
+<body class="flex flex-col md:flex-row justify-center items-center h-screen p-8 pt-12 gap-2 md:gap-4">
+  <form action="" id="quoteSelected" class="flex md:flex-col gap-0 md:gap-3">
+
+    
+    <input type="radio" name="catagory" class="hidden " id="success" value="success"  checked>   
+    <label class="px-4 md:px-6  py-2 text-center cursor-pointer   border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300  " for="success" >Success</label>
+
+   
+    <input type="radio" name="catagory" class="hidden" id="motivational" value="motivational"  >
+    <label class="px-4 md:px-6 py-2  text-center cursor-pointer  border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300" for="motivational"> Motivational</label>
+
+  
+    <input type="radio" name="catagory" class="hidden" id="programming" value="programming" >
+    <label class="px-4 md:px-6 py-2  text-center cursor-pointer  border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300" for="programming"> Programming</label>
+  
+    
+    <input type="radio" name="catagory" class="hidden" id="All" value="All" >
+    <label class= "px-4 md:px-6 py-2  text-center cursor-pointer  border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300" for="All">  All</label>
+  </form>
+
+  <div
+    class="qote-box px-10 py-12  min-h-[80vh] min-w-[70vw] lg:min-w-full lg:max-h-[50vh] rounded-xl space-y-6 text-white cursor-pointer bg-custom-radial">
+    <div class="icon1  "><i class="fa fa-quote-left text-4xl" aria-hidden="true"></i></div>
+
+    <blockquote id="quotee" class="font-quote leading-10  lg:leading-10 text-center text-xl md:text-3xl" > </blockquote>
+    <div class="auto-line flex items-center justify-end border-blue-500 gap-3 flex-wrap"> <span
+        class="w-10 h-[2px] bg-commen"></span>
+      <p id="autho" class="lg:text-lg author italic"></p>
+    </div>
+
+    <div class="icon2 flex justify-end"><i class="fa fa-quote-right text-4xl " aria-hidden="true"></i></div>
+
+   
+      <button id="new" class="button block px-6 py-4 rounded-xl mx-auto  bg-[#ed9d09] shadow-2xl ">New Quote</button>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

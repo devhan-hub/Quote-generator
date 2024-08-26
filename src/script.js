@@ -126,6 +126,7 @@ const authorofQuote = document.getElementById('autho');
 const newButton = document.getElementById("new");
 const quoteCatagory = document.getElementById("quoteSelected");
 const labels = document.querySelectorAll("#quoteSelected label");
+const quoteBox = document.querySelector(".qote-box");
 
 let selectedQuotes =[];
   
@@ -138,8 +139,8 @@ displayQuote();
 //  for label style
 function resetLabels() {
   labels.forEach(label => {
-      label.classList.remove('bg-[#01cc65]', 'text-white');
-      label.classList.add('text-[#01cc65]', 'bg-transparent');
+      label.classList.remove('bg-[#ed9d09]', 'text-white');
+      label.classList.add('text-[#ed9d09]', 'bg-transparent');
   });
 }
 
@@ -148,9 +149,10 @@ const initialSelectedRadio = document.querySelector('input[name="catagory"]:chec
 
 function applySelectedStyle(selectedRadio) {
   const selectedLabel = document.querySelector(`label[for="${selectedRadio.id}"]`);
-  selectedLabel.classList.add('bg-[#01cc65]', 'text-white');
-  selectedLabel.classList.remove('text-[#01cc65]', 'bg-transparent');
-}
+  selectedLabel.classList.add('bg-[#ed9d09]', 'text-white');
+  selectedLabel.classList.remove('text-[#ed9d09]', 'bg-transparent');
+};
+
 
 quoteCatagory.addEventListener('change' , (event) => {
     const  selectedCatagory= event.target.value;
@@ -175,6 +177,7 @@ function displayQuote() {
 }
 
 newButton.addEventListener('click' ,displayQuote);
+quoteBox.addEventListener('click' ,displayQuote);
 
 
 
