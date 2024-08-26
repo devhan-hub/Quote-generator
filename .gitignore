@@ -1,0 +1,6 @@
+node_modules
+src
+package-lock.json
+package.json
+tailwind.config.js
+succ.jpg
