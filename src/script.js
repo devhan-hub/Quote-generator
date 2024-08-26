@@ -125,11 +125,38 @@ const blockquote = document.getElementById('quotee');
 const authorofQuote = document.getElementById('autho');
 const newButton = document.getElementById("new");
 const quoteCatagory = document.getElementById("quoteSelected");
+const labels = document.querySelectorAll("#quoteSelected label");
 
 let selectedQuotes =[];
+  
+//  default display
+const defaultCategory = "success";
+selectedQuotes = allQuote.find(category => category.id === defaultCategory).quotes;
+displayQuote();
+
+
+//  for label style
+function resetLabels() {
+  labels.forEach(label => {
+      label.classList.remove('bg-[#01cc65]', 'text-white');
+      label.classList.add('text-[#01cc65]', 'bg-transparent');
+  });
+}
+
+const initialSelectedRadio = document.querySelector('input[name="catagory"]:checked');
+    applySelectedStyle(initialSelectedRadio);
+
+function applySelectedStyle(selectedRadio) {
+  const selectedLabel = document.querySelector(`label[for="${selectedRadio.id}"]`);
+  selectedLabel.classList.add('bg-[#01cc65]', 'text-white');
+  selectedLabel.classList.remove('text-[#01cc65]', 'bg-transparent');
+}
+
 quoteCatagory.addEventListener('change' , (event) => {
     const  selectedCatagory= event.target.value;
-
+    const selectedRadio = event.target;
+    resetLabels();
+    applySelectedStyle(selectedRadio);
      if(selectedCatagory === 'All') {
           selectedQuotes=allQuote.flatMap( catagory => catagory.quotes);
      }
