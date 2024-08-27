@@ -179,6 +179,17 @@ function displayQuote() {
 newButton.addEventListener('click' ,displayQuote);
 quoteBox.addEventListener('click' ,displayQuote);
 
+// 
+let allQuoteString = JSON.stringify(allQuote);
+localStorage.setItem("allQuote" ,allQuoteString);
+console.log(allQuoteString);
+
+
+// retrived
+let allQuoteObject = JSON.parse(localStorage.getItem("allQuote"));
+console.log(allQuoteObject)
+
+
 
 
 
