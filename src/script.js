@@ -115,7 +115,14 @@ document.getElementById("submit").addEventListener(('click'), () => {
     updatedCatagory();
     document.getElementById("added_quote").value = "";
     document.getElementById("added_quote_author").value = " ";
-    closeQuoteForm();
+     
+    document.getElementById("successBox").classList.remove("hidden");
+    document.getElementById("successMessage").textContent = "Quote Successfully Added"; 
+     setTimeout(() => {
+      closeQuoteForm();
+     } , 2000)
+
+   
   }
 });
 
