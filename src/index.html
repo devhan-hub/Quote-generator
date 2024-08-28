@@ -12,42 +12,100 @@
   <title>Quote Generator</title>
 </head>
 
-<body class="flex flex-col md:flex-row justify-center items-center h-screen p-8 pt-12 gap-2 md:gap-4">
-  <form action="" id="quoteSelected" class="flex md:flex-col gap-0 md:gap-3">
+<body>
+  <div class="main flex flex-col md:flex-row justify-center items-center h-screen p-8 pt-12 gap-2 md:gap-4">
+    <!--  catagory Radio Button -->
+    <form action="" id="quoteSelected" class=" flex md:flex-col gap-0 md:gap-3">
 
+      <input type="radio" name="catagory" class="hidden " id="success" value="success" checked>
+      <label
+        class="px-4 md:px-6  py-2 text-center cursor-pointer   border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300  "
+        for="success">Success</label>
+
+      <input type="radio" name="catagory" class="hidden" id="motivational" value="motivational">
+      <label
+        class="px-4 md:px-6 py-2  text-center cursor-pointer  border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300"
+        for="motivational"> Motivational</label>
+
+      <input type="radio" name="catagory" class="hidden" id="programming" value="programming">
+      <label
+        class="px-4 md:px-6 py-2  text-center cursor-pointer  border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300"
+        for="programming"> Programming</label>
+
+      <input type="radio" name="catagory" class="hidden" id="All" value="All">
+      <label
+        class="px-4 md:px-6 py-2  text-center cursor-pointer  border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300"
+        for="All"> All</label>
+    </form>
     
-    <input type="radio" name="catagory" class="hidden " id="success" value="success"  checked>   
-    <label class="px-4 md:px-6  py-2 text-center cursor-pointer   border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300  " for="success" >Success</label>
+    <!-- Quote display -->
+    <div
+      class="relative qote-box px-10 py-12  min-h-[80vh] min-w-[70vw] lg:min-w-full lg:max-h-[50vh] rounded-xl space-y-6 text-white cursor-pointer bg-custom-radial">
+      
+        <div id="add" class=" absolute right-0 top-0 p-4 group flex  items-center ">
+          <p class="text-lg md:px-4 py-2 md:bg-white md:text-[#f4c060] rounded-2xl md:group-hover:bg-[#ed9d09]  md:group-hover:text-white  duration-500 opacity-0 md:opacity-100 group-hover:opacity-100 -mt-3">
+            Add Quote
+          </p>
+          <div class="md:hidden"><i class="fa fa-plus md:fa-none text-2xl"></i></div>
+        </div>
+        <div id="delet" class=" absolute left-0 bottom-0 p-4 group flex  items-center ">
+          <div class="md:hidden"><i class="fa fa-times text-2xl"></i></div>
+          <p class="text-lg md:px-4 py-2 md:bg-white md:text-[#f4c060] rounded-2xl md:group-hover:bg-[#ed9d09]  md:group-hover:text-white  duration-500 opacity-0 md:opacity-100 group-hover:opacity-100 -mt-3">
+            Delete Quote
+          </p>
+        </div>
 
-   
-    <input type="radio" name="catagory" class="hidden" id="motivational" value="motivational"  >
-    <label class="px-4 md:px-6 py-2  text-center cursor-pointer  border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300" for="motivational"> Motivational</label>
+      <div class="icon1 "><i class="fa fa-quote-left  text-4xl"></i></div>
 
-  
-    <input type="radio" name="catagory" class="hidden" id="programming" value="programming" >
-    <label class="px-4 md:px-6 py-2  text-center cursor-pointer  border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300" for="programming"> Programming</label>
-  
-    
-    <input type="radio" name="catagory" class="hidden" id="All" value="All" >
-    <label class= "px-4 md:px-6 py-2  text-center cursor-pointer  border-2 rounded-lg text-[#ed9d09] font-bold relative ml-3 duration-300" for="All">  All</label>
-  </form>
+      <blockquote id="quotee" class="font-quote leading-10  lg:leading-10 text-center text-xl md:text-3xl">
+      </blockquote>
+      <div class="auto-line flex items-center justify-end border-blue-500 gap-3 flex-wrap"> <span
+          class="w-10 h-[2px] bg-commen "></span>
+        <p id="autho" class="lg:text-lg author italic"></p>
+      </div>
 
-  <div
-    class="qote-box px-10 py-12  min-h-[80vh] min-w-[70vw] lg:min-w-full lg:max-h-[50vh] rounded-xl space-y-6 text-white cursor-pointer bg-custom-radial">
-    <div class="icon1  "><i class="fa fa-quote-left text-4xl" aria-hidden="true"></i></div>
+      <div class="icon2 flex justify-end"><i class="fa fa-quote-right text-4xl "></i></div>
 
-    <blockquote id="quotee" class="font-quote leading-10  lg:leading-10 text-center text-xl md:text-3xl" > </blockquote>
-    <div class="auto-line flex items-center justify-end border-blue-500 gap-3 flex-wrap"> <span
-        class="w-10 h-[2px] bg-commen"></span>
-      <p id="autho" class="lg:text-lg author italic"></p>
-    </div>
 
-    <div class="icon2 flex justify-end"><i class="fa fa-quote-right text-4xl " aria-hidden="true"></i></div>
-
-   
       <button id="new" class="button block px-6 py-4 rounded-xl mx-auto  bg-[#ed9d09] shadow-2xl ">New Quote</button>
 
+    </div>
+
   </div>
+   
+  <!-- user input -->
+  <div id="userNewQuote" class="hidden z-50 fixed h-screen w-screen   bg-neutral-500 cursor-pointer">
+
+    <form action="" 
+      class="cursor-none overflow-hidden bg-white py-12 px-8 space-y-8 shadow-boxshadow shadow-[#f4c060] max-w-[80vh] mx-auto rounded-xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <i class="fa fa-times absolute top-0 right-0  z-50 text-xl p-3 px-6 bg-[#ed9d09] text-white cursor-pointer rounded-bl-md hover:bg-[#8a5b05] duration-300" aria-hidden="true" id="formClose"></i>
+
+      <div class="relative">
+        <textarea name="author_quote" id="added_quote" cols="40" rows="3"
+          class="min-h-16 min-w-10 outline-none border-2 border-gray-100  shadow-lg peer focus:border-[#ed9d09] focus:text-clip rounded-lg px-6 py-3 z-50"></textarea>
+        <label for="added_quote"
+          class="absolute left-0 top-[30%] px-8 text-[#ed9d09] font-bold italic text-[15px] capitalize pointer-events-none peer-focus:scale-90 peer-focus:-top-3  duration-300">
+          Enter The Quote here</label>
+      </div>
+
+      <div class="relative">
+        <input type="text" name="author" id="added_quote_author"
+          class="min-h-10 min-w-10 outline-none border-2 border-gray-100  shadow-lg peer focus:border-[#ed9d09] focus:text-clip rounded-lg px-6 py-3 z-50">
+        <label for="added_quote_author"
+          class="absolute left-0 top-[30%] px-8 text-[#ed9d09] font-bold italic text-sm capitalize pointer-events-none peer-focus:scale-90 peer-focus:-top-2.5  z-10 duration-300">
+          Author</label>
+      </div>
+        <div id="errorBox" class="hidden space-y-2 items-center pl-8  pr-2 text-[#ff0000]  font-bold capitalize italic  ">
+             <i class="fa fa-times-circle text-lg" aria-hidden="true"></i>
+             <p id="errorMessage" class="inline-block">no</p>
+        </div>
+
+      <button type="submit" id="submit"
+        class="px-8 py-2 text-[#ed9d09] shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#ed9d09] hover:text-white duration-300">Submit</button>
+    </form>
+</div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 
