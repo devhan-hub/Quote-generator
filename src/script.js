@@ -1,5 +1,4 @@
 
-
 const blockquote = document.getElementById('quotee');
 const authorofQuote = document.getElementById('autho');
 const newButton = document.getElementById("new");
@@ -10,6 +9,7 @@ const addQuote = document.getElementById("add");
 let deletQuotevar = document.getElementById("delet");
 let deletYes = document.getElementById("Yes");
 let deletNo = document.getElementById("No");
+let favorite = document.getElementById("favorite");
 
 // retriving from local storage
 
