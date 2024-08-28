@@ -1,3 +1,5 @@
+
+
 const blockquote = document.getElementById('quotee');
 const authorofQuote = document.getElementById('autho');
 const newButton = document.getElementById("new");
@@ -6,11 +8,15 @@ const labels = document.querySelectorAll("#quoteSelected label");
 const quoteBox = document.querySelector(".qote-box");
 const addQuote = document.getElementById("add");
 let deletQuotevar = document.getElementById("delet");
+let deletYes = document.getElementById("Yes");
+let deletNo = document.getElementById("No");
 
 // retriving from local storage
+
 let allQuoteObject = JSON.parse(localStorage.getItem("allQuote"));
 let selectedQuotes = [];
 let selectedCatagory = {};
+let selectedQuoteIndex;
 const initialSelectedRadio = document.querySelector('input[name="catagory"]:checked');
 applySelectedStyle(initialSelectedRadio);
 //  for label 
@@ -26,7 +32,8 @@ function applySelectedStyle(selectedRadio) {
   selectedLabel.classList.remove('text-[#ed9d09]', 'bg-transparent');
 };
 // default Quote
-const defaultCategory ="programming";
+
+const defaultCategory ="success";
 selectedCatagory = allQuoteObject.find(catagory => catagory.id === defaultCategory);
 selectedQuotes = selectedCatagory.quotes;
 displayQuote();
@@ -37,31 +44,26 @@ quoteCatagory.addEventListener('change', (event) => {
   const selectedRadio = event.target;
   resetLabels();
   applySelectedStyle(selectedRadio);
-  if (selectedCatagoryID === 'All') {
-    selectedCatagory.id = "All";
-    selectedQuotes = allQuoteObject.flatMap(catagory => catagory.quotes);
-  }
-
-  else {
+ 
     selectedCatagory = allQuoteObject.find(catagory => catagory.id === selectedCatagoryID);
-    selectedQuotes = selectedCatagory ? selectedCatagory.quotes : [];
-  }
+    if(selectedCatagory) {
+      if (selectedCatagoryID === 'All') { 
+        selectedQuotes = allQuoteObject.flatMap(catagory => catagory.quotes);
+      }
+
+      else {
+        selectedQuotes =selectedCatagory.quotes;
+      }
+    }
 
   displayQuote();
 });
 
 function displayQuote() {
-  const selectedQuoteIndex = Math.floor(Math.random() * selectedQuotes.length);
+   selectedQuoteIndex = Math.floor(Math.random() * selectedQuotes.length);
   blockquote.innerHTML = selectedQuotes[selectedQuoteIndex].quote;
   authorofQuote.innerHTML = selectedQuotes[selectedQuoteIndex].author;
 
-  deletQuotevar.replaceWith(deletQuotevar.cloneNode(true));
-  deletQuotevar = document.querySelector("#delet");
-
-  deletQuotevar.addEventListener("click", () => {
-    deletQuote(selectedQuoteIndex);
-
-  })
 }
 
 newButton.addEventListener('click', displayQuote);
@@ -70,11 +72,11 @@ quoteBox.addEventListener('click', displayQuote);
 
 addQuote.addEventListener("click", () => {
   closeQuoteForm();
-  document.getElementById("added_quote").value = "";
-  document.getElementById("added_quote_author").value = " ";
   
 });
 
+
+// adding validation
 document.getElementById("submit").addEventListener(('click'), () => {
   event.preventDefault();
 
@@ -84,8 +86,7 @@ document.getElementById("submit").addEventListener(('click'), () => {
   const errorBox = document.getElementById("errorBox");
   const errorBoxContent = document.getElementById("errorMessage");
  
-  errorBox.classList.add("hidden");
-  errorBoxContent.textContent = " ";
+ 
 
   let valid = true;
   if (!addedQuote || !addedquoteauthor) {
@@ -104,8 +105,23 @@ document.getElementById("submit").addEventListener(('click'), () => {
   }
 
   if (valid) {
+
+    let prefix = '';
+    switch (selectedCatagory.id) {
+        case 'motivational':
+            prefix = 'M';
+            break;
+        case 'programming':
+            prefix = 'P';
+            break;
+        case 'success':
+            prefix = 'S';
+            break;
+    }
+
+    const newQuoteId = prefix + (selectedQuotes.length + 1).toString();
     let useraddQuote = {
-      id: (selectedQuotes.length + 1).toString(),
+      id:newQuoteId,
       quote: addedQuote,
       author: addedquoteauthor
     }
@@ -113,39 +129,71 @@ document.getElementById("submit").addEventListener(('click'), () => {
 
 
     updatedCatagory();
-    document.getElementById("added_quote").value = "";
-    document.getElementById("added_quote_author").value = " ";
      
     document.getElementById("successBox").classList.remove("hidden");
     document.getElementById("successMessage").textContent = "Quote Successfully Added"; 
+
      setTimeout(() => {
       closeQuoteForm();
      } , 2000)
-
-   
   }
 });
 
+deletQuotevar.addEventListener("click", () => {
+   
+  closeQuoteForm();
+  setForDelet();
+
+  document.getElementById("added_quote").value = selectedQuotes[selectedQuoteIndex].quote;
+  document.getElementById("added_quote_author").value =selectedQuotes[selectedQuoteIndex].author;
+
+})
+
+function setForDelet() {
+  document.getElementById("deletelabel").classList.remove("hidden");
+  document.getElementById("submit").classList.add("hidden");
+  deletYes.classList.remove("hidden");
+  deletNo.classList.remove("hidden");
+}
+
+deletYes.addEventListener(('click'), () => {
+  event.preventDefault();
+     deletQuote();
+
+
+});
+deletNo.addEventListener(('click'),() => {
+  event.preventDefault();
+  closeQuoteForm();
+ 
+})
 // delete 
-function deletQuote(selectedQuoteIndex) {
-  if (selectedQuoteIndex >= 0 && selectedQuoteIndex < selectedQuotes.length) {
+function deletQuote() {
+ 
     selectedQuotes.splice(selectedQuoteIndex, 1);
     updatedCatagory();
-  } else {
-    console.error("Invalid index:", selectedQuoteIndex);
-  }
+    console.log(selectedQuotes)
+    document.getElementById("successBox").classList.remove("hidden");
+    document.getElementById("successMessage").textContent = "Quote Successfully Deleted"; 
+    displayQuote() ;
+     setTimeout(() => {
+      closeQuoteForm();
+     } , 2000)
+    
+  
 }
 
 function updatedCatagory() {
   let catagoryToUpdate = allQuoteObject.find(catagory => catagory.id === selectedCatagory.id);
   if (catagoryToUpdate) {
     catagoryToUpdate.quotes = selectedQuotes;
-    allQuoteString = JSON.stringify(allQuoteObject);
+   const  allQuoteString = JSON.stringify(allQuoteObject);
     localStorage.setItem("allQuote", allQuoteString);
+    console.log("Updated allQuoteObject:", allQuoteObject);
+
   }
 
 }
-
 
 // to close when the close button clicked
 document.getElementById("formClose").addEventListener(("click") ,() => {
@@ -163,12 +211,21 @@ userAddeFormOut.addEventListener('click', (event) => {
 function closeQuoteForm() {
   const addquoteForm = document.getElementById("userNewQuote");
   addquoteForm.classList.toggle('hidden');
-  document.querySelector(".main").classList.toggle("hidden")
-  const errorBox = document.getElementById("errorBox");
-  const errorBoxContent = document.getElementById("errorMessage");
-  errorBox.classList.add("hidden");
-  errorBoxContent.textContent = " ";
+  document.querySelector(".main").classList.toggle("hidden");
+  
+  document.getElementById("errorBox").classList.add("hidden");
+  document.getElementById("errorMessage").textContent = "";
 
+  document.getElementById("successBox").classList.add("hidden");
+  document.getElementById("successMessage").textContent = "";
+
+  document.getElementById("added_quote").value = "";
+  document.getElementById("added_quote_author").value = " ";
+
+  document.getElementById("deletelabel").classList.add("hidden");
+  document.getElementById("submit").classList.remove("hidden");
+  deletYes.classList.add("hidden");
+  deletNo.classList.add("hidden");
 };
 
 

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div class="main flex flex-col md:flex-row justify-center items-center h-screen p-8 pt-12 gap-2 md:gap-4">
+  <div class="  main flex flex-col md:flex-row justify-center items-center h-screen p-8 pt-12 gap-2 md:gap-4">
     <!--  catagory Radio Button -->
     <form action="" id="quoteSelected" class=" flex md:flex-col gap-0 md:gap-3">
 
@@ -73,27 +73,34 @@
 
   </div>
    
-  <!-- user input -->
+  <!-- user Add Quote-->
   <div id="userNewQuote" class="hidden z-50 fixed h-screen w-screen   bg-neutral-500 cursor-pointer">
 
     <form action="" 
-      class="cursor-none overflow-hidden bg-white py-12 px-8 space-y-8 shadow-boxshadow shadow-[#f4c060] max-w-[80vh] mx-auto rounded-xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      class="cursor-text overflow-hidden bg-white pt-16 pb-8 px-8 space-y-8 shadow-boxshadow shadow-[#f4c060] max-w-[80vh] mx-auto rounded-xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <i class="fa fa-times absolute top-0 right-0  z-50 text-xl p-3 px-6 bg-[#ed9d09] text-white cursor-pointer rounded-bl-md hover:bg-[#8a5b05] duration-300" aria-hidden="true" id="formClose"></i>
 
-      <div class="relative">
+
+      <label id="deletelabel" class=" hidden text-[16px] text-red-500  font-bold" for="" >Do You Want To Delete This Quote Permantly ?</label>
+
+      <div class=" space-y-2">
+
+
+        <label  for="added_quote"
+        class=" font-quote text-[#ed9d09] font-bold italic text-xl capitalize ">
+        Quote</label>
         <textarea name="author_quote" id="added_quote" cols="40" rows="3"
           class="min-h-16 min-w-10 outline-none border-2 border-gray-100  shadow-lg peer focus:border-[#ed9d09] focus:text-clip rounded-lg px-6 py-3 z-50"></textarea>
-        <label for="added_quote"
-          class="absolute left-0 top-[30%] px-8 text-[#ed9d09] font-bold italic text-[15px] capitalize pointer-events-none peer-focus:scale-90 peer-focus:-top-3  duration-300">
-          Enter The Quote here</label>
+       
       </div>
 
-      <div class="relative">
+      <div class="relative flex flex-col space-y-4">
+        <label for="added_quote"
+        class=" font-quote text-[#ed9d09] font-bold italic text-xl capitalize ">
+       Author</label>
         <input type="text" name="author" id="added_quote_author"
           class="min-h-10 min-w-10 outline-none border-2 border-gray-100  shadow-lg peer focus:border-[#ed9d09] focus:text-clip rounded-lg px-6 py-3 z-50">
-        <label for="added_quote_author"
-          class="absolute left-0 top-[30%] px-8 text-[#ed9d09] font-bold italic text-sm capitalize pointer-events-none peer-focus:scale-90 peer-focus:-top-2.5  z-10 duration-300">
-          Author</label>
+         
       </div>
         <div id="errorBox" class="hidden space-y-2 items-center pl-8  pr-2 text-[#ff0000]  font-bold capitalize italic  ">
              <i class="fa fa-times-circle text-lg " aria-hidden="true"></i>
@@ -104,11 +111,21 @@
           <p id="successMessage" class="inline-block">no</p>
         </div>
 
-      <button type="submit" id="submit"
-        class="px-8 py-2 text-[#ed9d09] shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#ed9d09] hover:text-white duration-300">Submit</button>
+        <div class="flex justify-center gap-8">
+      <button type="submit " id="submit"
+        class="  px-8 py-2 text-[#ed9d09] shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#ed9d09] hover:text-white duration-300">Submit</button>
+
+        <button type="submit " id="Yes"
+        class=" hidden px-8 py-2 text-[#ed9d09] shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#ed9d09] hover:text-white duration-300">Yes</button>
+
+        <button type="submit " id="No"
+        class="hidden px-8 py-2 text-[#ed9d09] shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#ed9d09] hover:text-white duration-300">No</button>
+
+      </div>
     </form>
 </div>
-  </div>
+
+
 
   <script src="script.js"></script>
 </body>
