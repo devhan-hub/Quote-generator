@@ -5,7 +5,7 @@ const quoteCatagory = document.getElementById("quoteSelected");
 const labels = document.querySelectorAll("#quoteSelected label");
 const quoteBox = document.querySelector(".qote-box");
 const addQuote = document.getElementById("add");
-const deletQuotevar = document.getElementById("delet");
+let deletQuotevar = document.getElementById("delet");
 
 // retriving from local storage
 let allQuoteObject = JSON.parse(localStorage.getItem("allQuote"));
@@ -26,7 +26,7 @@ function applySelectedStyle(selectedRadio) {
   selectedLabel.classList.remove('text-[#ed9d09]', 'bg-transparent');
 };
 // default Quote
-const defaultCategory ="motivational";
+const defaultCategory ="programming";
 selectedCatagory = allQuoteObject.find(catagory => catagory.id === defaultCategory);
 selectedQuotes = selectedCatagory.quotes;
 displayQuote();
@@ -38,6 +38,7 @@ quoteCatagory.addEventListener('change', (event) => {
   resetLabels();
   applySelectedStyle(selectedRadio);
   if (selectedCatagoryID === 'All') {
+    selectedCatagory.id = "All";
     selectedQuotes = allQuoteObject.flatMap(catagory => catagory.quotes);
   }
 
@@ -53,6 +54,9 @@ function displayQuote() {
   const selectedQuoteIndex = Math.floor(Math.random() * selectedQuotes.length);
   blockquote.innerHTML = selectedQuotes[selectedQuoteIndex].quote;
   authorofQuote.innerHTML = selectedQuotes[selectedQuoteIndex].author;
+
+  deletQuotevar.replaceWith(deletQuotevar.cloneNode(true));
+  deletQuotevar = document.querySelector("#delet");
 
   deletQuotevar.addEventListener("click", () => {
     deletQuote(selectedQuoteIndex);
@@ -81,25 +85,25 @@ document.getElementById("submit").addEventListener(('click'), () => {
   const errorBoxContent = document.getElementById("errorMessage");
  
   errorBox.classList.add("hidden");
-  errorBoxContent.innerHTML = " ";
+  errorBoxContent.textContent = " ";
 
-  let valid = 1;
-  if (addedQuote === null || addedquoteauthor === null) {
+  let valid = true;
+  if (!addedQuote || !addedquoteauthor) {
     errorBox.classList.remove("hidden");
-    errorBoxContent.textContent = "Both the Quote and the Author required";
-    valid = 0;
+    errorBoxContent.textContent = "Both the Quote and the Author are required";
+    valid = false;
   }
 
   let duplicateQuote = selectedQuotes.some(catagory => catagory.quote === addedQuote && catagory.author === addedquoteauthor);
-  if (duplicateQuote) { errorBox.classList.remove("hidden"); errorBoxContent.textContent = "The Quote already existe"; valid = 0; };
+  if (duplicateQuote) { errorBox.classList.remove("hidden"); errorBoxContent.textContent = "The Quote already existe"; valid = false; };
 
   if (selectedCatagory.id === "All") {
     errorBox.classList.remove("hidden");
-    errorBoxContent.textContent = "Selecte Specfic Catagory";
-    valid = 0;
+     errorBoxContent.textContent =  "Selecte Specfic Catagory"; 
+     valid = false;
   }
 
-  if (valid === 1) {
+  if (valid) {
     let useraddQuote = {
       id: (selectedQuotes.length + 1).toString(),
       quote: addedQuote,
@@ -117,8 +121,12 @@ document.getElementById("submit").addEventListener(('click'), () => {
 
 // delete 
 function deletQuote(selectedQuoteIndex) {
-  selectedQuotes.splice(selectedQuoteIndex, 1);
-  updatedCatagory()
+  if (selectedQuoteIndex >= 0 && selectedQuoteIndex < selectedQuotes.length) {
+    selectedQuotes.splice(selectedQuoteIndex, 1);
+    updatedCatagory();
+  } else {
+    console.error("Invalid index:", selectedQuoteIndex);
+  }
 }
 
 function updatedCatagory() {
@@ -149,6 +157,11 @@ function closeQuoteForm() {
   const addquoteForm = document.getElementById("userNewQuote");
   addquoteForm.classList.toggle('hidden');
   document.querySelector(".main").classList.toggle("hidden")
+  const errorBox = document.getElementById("errorBox");
+  const errorBoxContent = document.getElementById("errorMessage");
+  errorBox.classList.add("hidden");
+  errorBoxContent.textContent = " ";
+
 };
 
 
