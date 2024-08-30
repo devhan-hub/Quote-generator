@@ -67,13 +67,15 @@
       <div class="icon2 flex justify-end"><i class="fa fa-quote-right text-4xl "></i></div>
 
 
-      <div  class=" button text-center mx-auto flex justify-center gap-8 text-2xl "><i class="fas fa-sync" id="new"></i><i class="fa fa-heart data-quote  data-author fav text-red-600 bg-clip-content" aria-hidden="true"></i></div>
+      <div  class=" button text-center mx-auto flex justify-center gap-8 text-2xl "><i class="fas fa-sync" id="new"></i><i class="fa fa-heart data-quote  data-author fav  " aria-hidden="true"></i></div>
        
     </div>
-      <ul class="fav-list" id="favorite"></ul>
-      <button class="clearFavority">clear</button>
+    
   </div>
-   
+  <div>
+  
+
+ 
   <!-- user Add Quote-->
   <div id="userNewQuote" class="hidden z-50 fixed h-screen w-screen   bg-neutral-500 cursor-pointer">
 
@@ -124,7 +126,16 @@
 
       </div>
     </form>
+
 </div>
+
+<div class="hidden flex justify-center  gap-8 flex-col p-20" >
+ 
+<ul class="fav-list flex flex-col gap-6" id="favorite">
+  
+</ul>
+  <button class="clearFavority px-10 py-2 font-quote font-bold bg-red-500 text-white text-2xl rounded-2xl w-max duration-300 hover:bg-red-700">Clear </button>
+ </div>
 
 
 
