@@ -13,7 +13,7 @@
 </head>
 
 <body class="overflow-x-hidden scroll-smooth bg-gradient-to-tr from-[#1a237e] to-#7e57c2">
-
+<div class="main">
   <nav class="bg-[#2c3e50]  py-6 h-22   px-10 z-50 md:flex items-center justify-center h-24">
     <div class=" md:items-start md:h-full w-full md:basis-1/6 flex justify-between">
 
@@ -52,11 +52,6 @@
         for="All"> All</label>
     </form>
   </nav>
-
-
-
-
-
     <!-- Quote display -->
     <div
       class=" qote-box px-10 pt-28 box-content max-h-max max-w-[70vh] h-[80vh] rounded-xl  text-white cursor-pointer items-center justify-between space-y-12 md:mx-auto md:justify-center">
@@ -78,17 +73,15 @@
           id="new"></i>
         <i
           class="fa fa-heart data-quote p-3  rounded-full  hover:bg-[#ff6f61] hover:text-white duration-300  bg-[#ffe4e1] text-[#ff6f61]  fav  "></i>
-        <i
+        <i id="add"
           class="fa fa-plus text-[#ff6f61] md:fa-none  p-3 rounded-full  hover:bg-[#ff6f61] hover:text-white duration-300  bg-[#ffe4e1]"></i>
 
-        <i
+        <i id="delet"
           class="fa fa-minus text-[#ff6f61]  p-3  rounded-full  hover:bg-[#ff6f61] hover:text-white duration-300  bg-[#ffe4e1]"></i>
-
       </div>
-
     </div>
 
- 
+  </div>
 
 
 
@@ -97,8 +90,8 @@
   <div id="userNewQuote" class="hidden z-50 fixed h-screen w-screen   bg-neutral-500 cursor-pointer">
 
     <form action=""
-      class="cursor-text overflow-hidden bg-white pt-16 pb-8 px-8 space-y-8 shadow-boxshadow shadow-[#f4c060] max-w-[80vh] mx-auto rounded-xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <i class="fa fa-times absolute top-0 right-0 text-[#ff6f61] z-50 text-xl p-3 px-6 bg-[#ed9d09]  cursor-pointer rounded-bl-md hover:bg-[#8a5b05] duration-300"
+      class="cursor-text overflow-hidden bg-white pt-16 pb-8 px-8 space-y-8 shadow-2xl shadow-slate-800 max-w-[80vh] mx-auto rounded-xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-slate-700">
+      <i class="fa fa-times absolute top-0 right-0 text-white z-50 text-xl p-3 px-6 bg-[#ff6f61]  cursor-pointer rounded-bl-md hover:bg-[#8a5b05] duration-300"
         aria-hidden="true" id="formClose"></i>
 
 
@@ -111,7 +104,8 @@
         <label for="added_quote" class=" font-quote text-[#ed9d09] font-bold italic text-xl capitalize ">
           Quote</label>
         <textarea name="author_quote" id="added_quote" cols="40" rows="3"
-          class="min-h-16 min-w-10 outline-none border-2 border-gray-100  shadow-lg peer focus:border-[#ed9d09] focus:text-clip rounded-lg px-6 py-3 z-50"></textarea>
+          class=" input-one min-h-16 min-w-10 outline-none border-2 border-gray-100  shadow-lg peer focus:border-[#ed9d09] focus:text-clip rounded-lg px-6 py-3 z-50"></textarea>
+          <p class="added-one hidden text-black" id="quotesss"></p>
 
       </div>
 
@@ -119,7 +113,8 @@
         <label for="added_quote" class=" font-quote text-[#ed9d09] font-bold italic text-xl capitalize ">
           Author</label>
         <input type="text" name="author" id="added_quote_author"
-          class="min-h-10 min-w-10 outline-none border-2 border-gray-100  shadow-lg peer focus:border-[#ed9d09] focus:text-clip rounded-lg px-6 py-3 z-50">
+          class="input-two min-h-10 min-w-10 outline-none border-2 border-gray-100  shadow-lg peer focus:border-[#ed9d09] focus:text-clip rounded-lg px-6 py-3 z-50">
+          <p class="added-two hidden text-black" id="authorsss"></p>
 
       </div>
       <div id="errorBox" class="hidden space-y-2 items-center pl-8  pr-2 text-[#ff0000]  font-bold capitalize italic  ">
@@ -137,10 +132,14 @@
           class="  px-8 py-2 text-[#ed9d09] shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#ed9d09] hover:text-white duration-300">Submit</button>
 
         <button type="submit " id="Yes"
-          class=" hidden px-8 py-2 text-white shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#dc3545] hover:text-white duration-300">Yes</button>
+          class=" hidden px-8 py-2  shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#dc3545] hover:text-white duration-300">Yes</button>
 
         <button type="submit " id="No"
           class="hidden px-8 py-2 text=white shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#dc3545] hover:text-white duration-300">No</button>
+
+          <button type="submit " id="Ok"
+          class="hidden px-8 py-2 text=white shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#dc3545] hover:text-white duration-300">Ok</button>
+
 
       </div>
     </form>

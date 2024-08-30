@@ -15,6 +15,7 @@ const favoriteIcon = document.querySelector(".fav");
 const clearFavority = document.querySelector(".clearFavority");
 const submit = document.getElementById("submit");
 const display = document.getElementById("display");
+const ok = document.getElementById("Ok");
 
 // retriving from local storage
 
@@ -86,10 +87,11 @@ function displayQuote() {
 
   if(favoriteQuotes.find(favorite => favorite.quote === blockquote.textContent && favorite.author ===  authorofQuote.textContent))
      {
-      favoriteIcon.classList.add("text-red-600")
+      favoriteIcon.classList.add('text-white' , 'bg-red-600')
      }
      else {
-      favoriteIcon.classList.remove("text-red-600")
+      favoriteIcon.classList.remove('text-white' , 'bg-red-600')
+
      }
      displayFavority()
 }
@@ -99,31 +101,31 @@ newButton.addEventListener('click', displayQuote);
 // add user Quote
 addQuote.addEventListener("click", () => {
   closeQuoteForm();
+     setforAddDelet(1);
+
  
 });
 // adding validation
 submit.addEventListener(('click'), () => {
   event.preventDefault();
-
-  const addquoteForm = document.getElementById("userNewQuote");
   const addedQuote = document.getElementById("added_quote").value.trim();
   const addedquoteauthor = document.getElementById("added_quote_author").value.trim();
-  const errorBox = document.getElementById("errorBox");
-  const errorBoxContent = document.getElementById("errorMessage");
+
  
   let valid = true;
   if (!addedQuote || !addedquoteauthor) {
-    errorBox.classList.remove("hidden");
-    errorBoxContent.textContent = "Both the Quote and the Author are required";
     valid = false;
+    succError(0 ,"Both the Quote and the Author are required")
   }
 
   let duplicateQuote = selectedQuotes.some(catagory => catagory.quote === addedQuote && catagory.author === addedquoteauthor);
-  if (duplicateQuote) { errorBox.classList.remove("hidden"); errorBoxContent.textContent = "The Quote already existe"; valid = false; };
+  if (duplicateQuote) {
+       valid = false; 
+        succError(0 ,"The Quote already existe")
+   };
 
   if (selectedCatagory.id === "All") {
-    errorBox.classList.remove("hidden");
-    errorBoxContent.textContent = "Selecte Specfic Catagory";
+    succError(0 ,"Selecte Specfic Catagory")
     valid = false;
   }
 
@@ -137,38 +139,28 @@ submit.addEventListener(('click'), () => {
     quotelength =quotelength +1;
     selectedQuotes.push(useraddQuote);
      updatedCatagory();
-
-    document.getElementById("successBox").classList.remove("hidden");
-    document.getElementById("successMessage").textContent = "Quote Successfully Added";
-
-    setTimeout(() => {
-      closeQuoteForm();
-    }, 2000)
+   succError(1, "Quote Successfully Deleted")
+   submit.classList.add("hidden");
+   ok.classList.remove("hidden");
   }
 });
 
-deletQuotevar.addEventListener("click", () => {
-
+ok.addEventListener(("click"),() => {
   closeQuoteForm();
-  setForDelet();
-
-  document.getElementById("added_quote").value = selectedQuotes[selectedQuoteIndex].quote;
-  document.getElementById("added_quote_author").value = selectedQuotes[selectedQuoteIndex].author;
-  deletQuote();
+})
+deletQuotevar.addEventListener("click", () => {
+  closeQuoteForm();
+  setforAddDelet(2)
+  document.querySelector(".added-one").textContent = selectedQuotes[selectedQuoteIndex].quote;
+  document.querySelector(".added-two").textContent = selectedQuotes[selectedQuoteIndex].author;
+  
 
 })
 
-function setForDelet() {
-  document.getElementById("deletelabel").classList.remove("hidden");
-  document.getElementById("submit").classList.add("hidden");
-  deletYes.classList.remove("hidden");
-  deletNo.classList.remove("hidden");
-}
 
 deletYes.addEventListener(('click'), () => {
   event.preventDefault();
- 
-  console.log(selectedQuoteIndex);
+   deletQuote();
 
 });
 deletNo.addEventListener(('click'), () => {
@@ -177,18 +169,14 @@ deletNo.addEventListener(('click'), () => {
 })
 // delete 
 function deletQuote() {
-   
- 
   selectedQuotes.splice(selectedQuoteIndex, 1);
   updatedCatagory();
-  document.getElementById("successBox").classList.remove("hidden");
-  document.getElementById("successMessage").textContent = "Quote Successfully Deleted";
+  succError(1,"Quote Successfully Deleted")
   displayQuote();
-  setTimeout(() => {
-    closeQuoteForm();
-  }, 2000)
-
-
+  document.getElementById("Yes").classList.add("hidden") ;   
+  document.getElementById("No").classList.add("hidden") ;
+  ok.classList.remove("hidden"); 
+  document.getElementById("deletelabel") .classList.add("hidden");
 }
 
 function updatedCatagory() {
@@ -223,25 +211,69 @@ userAddeFormOut.addEventListener('click', (event) => {
 
 function closeQuoteForm() {
   const addquoteForm = document.getElementById("userNewQuote");
-  addquoteForm.classList.toggle('hidden');
-  document.querySelector(".main").classList.toggle("hidden");
-
-  document.getElementById("errorBox").classList.add("hidden");
-  document.getElementById("errorMessage").textContent = "";
-
-  document.getElementById("successBox").classList.add("hidden");
-  document.getElementById("successMessage").textContent = "";
-
-  document.getElementById("added_quote").value = "";
+ 
+    addquoteForm.classList.toggle('hidden');
+    document.querySelector(".main").classList.toggle("hidden");
+    document.getElementById("errorBox").classList.add("hidden");
+   document.getElementById("errorMessage").textContent = "";
+   document.getElementById("successBox").classList.add("hidden");
+   document.getElementById("successMessage").textContent = "";
+   document.getElementById("added_quote").value = "";
   document.getElementById("added_quote_author").value = " ";
-
-  document.getElementById("deletelabel").classList.add("hidden");
-  document.getElementById("submit").classList.remove("hidden");
-  deletYes.classList.add("hidden");
-  deletNo.classList.add("hidden");
+  ok.classList.add("hidden");
+  
+ 
+ 
 };
 //
+ function succError (num , str) {
+      if(num === 1) {
+        document.getElementById("successBox").classList.remove("hidden");
+        document.getElementById("successMessage").textContent = str;
+        document.getElementById("errorBox").classList.add("hidden");
+        document.getElementById("errorMessage").textContent = "";
+      }
 
+      else {
+        document.getElementById("successBox").classList.add("hidden");
+        document.getElementById("successMessage").textContent = "";
+        document.getElementById("errorBox").classList.remove("hidden");
+        document.getElementById("errorMessage").textContent = str;
+      }
+ }
+
+function setforAddDelet(num) {
+     if(num === 1) {
+
+      if(document.querySelector(".input-one").classList.contains("hidden")){
+        document.querySelector(".input-one").classList.remove("hidden");
+        document.querySelector(".input-two").classList.remove("hidden");
+        document.querySelector(".added-one").classList.add("hidden") ;  
+        document.querySelector(".added-two").classList.add("hidden") ; 
+      }
+        
+          document.getElementById("deletelabel").classList.add("hidden") ; 
+          document.getElementById("Yes").classList.add("hidden") ;   
+          document.getElementById("No").classList.add("hidden") ;
+           document.getElementById("submit").classList.remove("hidden");
+           
+     }
+
+     if(num ===2) {
+      if(!document.querySelector(".input-one").classList.contains("hidden")){
+        document.querySelector(".input-one").classList.add("hidden");
+        document.querySelector(".input-two").classList.add("hidden");
+        document.querySelector(".added-one").classList.remove("hidden") ;  
+        document.querySelector(".added-two").classList.remove("hidden") ; 
+      }  
+        document.getElementById("submit").classList.add("hidden");
+       
+          document.getElementById("deletelabel").classList.remove("hidden") ; 
+          document.getElementById("Yes").classList.remove("hidden") ;   
+          document.getElementById("No").classList.remove("hidden") ; 
+        
+   }
+}
 function displayFavority() {
      favoriteQuoteList.innerHTML = '',
      favoriteQuotes.forEach(quot => {
@@ -278,7 +310,7 @@ function savetoFavorite() {
         favoriteQuotes.push(favQuote);
         console.log(favQuote)
         updatedCatagory()
-        favoriteIcon.classList.add("text-red-600");  
+        favoriteIcon.classList.add( 'text-white','bg-red-600');  
         displayFavority()
    
 }
@@ -288,7 +320,7 @@ function removeFavorite(quote){
     console.log(favoriteQuotes)
     updatedCatagory()
 
-      favoriteIcon.classList.remove("text-red-600")  
+    favoriteIcon.classList.remove( 'text-white','bg-red-600');  
       displayFavority()
 }
 
@@ -296,7 +328,7 @@ clearFavority.addEventListener(("click"), () => {
   favoriteQuotes =[];
   updatedCatagory();
   displayFavority();
-  favoriteIcon.classList.remove("text-red-600")
+  favoriteIcon.classList.remove( 'text-white','bg-red-600'); 
 })
 
 
