@@ -2,6 +2,7 @@
 const blockquote = document.getElementById('quotee');
 const authorofQuote = document.getElementById('autho');
 const newButton = document.getElementById("new");
+const caticon = document.querySelector(".catagory");
 const quoteCatagory = document.getElementById("quoteSelected");
 const labels = document.querySelectorAll("#quoteSelected label");
 const quoteBox = document.querySelector(".qote-box");
@@ -9,46 +10,51 @@ const addQuote = document.getElementById("add");
 let deletQuotevar = document.getElementById("delet");
 let deletYes = document.getElementById("Yes");
 let deletNo = document.getElementById("No");
-let favoriteQuoteList = document.getElementById("favorite");
+let favoriteQuoteList = document.getElementById("favoriteman");
 const favoriteIcon = document.querySelector(".fav");
 const clearFavority = document.querySelector(".clearFavority");
 const submit = document.getElementById("submit");
+const display = document.getElementById("display");
 
 // retriving from local storage
 
 let allQuoteObject = JSON.parse(localStorage.getItem("allQuote"));
-console.log(allQuoteObject)
 let favoriteQuotes =allQuoteObject.find(catagory => catagory.id === "favorite");
-
-favoriteQuotes = favoriteQuotes.quotes;
-
-
-// console.log(favoriteQuotes)
+favoriteQuotes = favoriteQuotes.quotes ;
 let selectedQuotes = [];
 let selectedCatagory = {};
 let selectedQuoteIndex;
 let quotelength;
+
 const initialSelectedRadio = document.querySelector('input[name="catagory"]:checked');
 applySelectedStyle(initialSelectedRadio);
 //  for label 
 function resetLabels() {
   labels.forEach(label => {
-    label.classList.remove('bg-[#ed9d09]', 'text-white');
-    label.classList.add('text-[#ed9d09]', 'bg-transparent');
+    label.classList.remove('bg-[#ed9d09]', 'text-white','md:text-[#ed9d09]');
+    label.classList.add('text-black', 'bg-white' , 'md:text-white');
   });
 }
 function applySelectedStyle(selectedRadio) {
   const selectedLabel = document.querySelector(`label[for="${selectedRadio.id}"]`);
-  selectedLabel.classList.add('bg-[#ed9d09]', 'text-white');
-  selectedLabel.classList.remove('text-[#ed9d09]', 'bg-transparent');
+  selectedLabel.classList.add('bg-[#ed9d09]', 'text-white' ,'md:text-[#ed9d09]');
+  selectedLabel.classList.remove('text-black', 'bg-white', 'md:text-white');
 };
-// default Quote
-// blockquote.innerHTML = selectedCatagory.id
-const defaultCategory = "motivational";
+
+const defaultCategory = "success";
 selectedCatagory = allQuoteObject.find(catagory => catagory.id === defaultCategory);
 selectedQuotes = selectedCatagory.quotes;
 quotelength= selectedQuotes.length;
 displayQuote();
+console.log(allQuoteObject)
+
+// related to display function
+
+
+display.addEventListener(("click"),()=>{
+  document.getElementById("displayallFavorite").classList.toggle("hidden");
+  
+})
 
 // getting selected quote
 quoteCatagory.addEventListener('change', (event) => {
@@ -57,13 +63,16 @@ quoteCatagory.addEventListener('change', (event) => {
   resetLabels();
   applySelectedStyle(selectedRadio);
 
+  setTimeout(() =>{
+    quoteCatagory.classList.toggle("right-[-100%]");
+  },500)
+
   selectedCatagory = allQuoteObject.find(catagory => catagory.id === selectedCatagoryID);
   if (selectedCatagory) {
    
       selectedQuotes = selectedCatagory.quotes;
       quotelength = selectedQuotes.length;
   }
-
   displayQuote();
 });
 
@@ -79,16 +88,15 @@ function displayQuote() {
      else {
       favoriteIcon.classList.remove("text-red-600")
      }
-  
+     displayFavority()
 }
-
+  displayQuote();
 newButton.addEventListener('click', displayQuote);
 
 // add user Quote
 addQuote.addEventListener("click", () => {
   closeQuoteForm();
  
-
 });
 // adding validation
 submit.addEventListener(('click'), () => {
@@ -230,13 +238,17 @@ function closeQuoteForm() {
   deletNo.classList.add("hidden");
 };
 //
+
 function displayFavority() {
-     favoriteQuoteList.innerHTML = ""
-     favoriteQuotes.quotes.forEach(quot => {
-      const li = document.createElement("li");
-      li.textContent= quot;
+     favoriteQuoteList.innerHTML = '',
+     favoriteQuotes.forEach(quot => {
+      let li = document.createElement("li");
+      li.textContent = `${quot.quote}, \"${quot.type}\"`;
+
+     li.className = 'gap-5 flex px-2 py-4 bg-slate-500 rounded-lg text-white text-lg font-quote';
       const removeBtn = document.createElement("button");
-      removeBtn.textContent='remove';
+      removeBtn.className ='self-center rounded-2xl duration-300 hover:bg-red-700 ease-in-out px-3 py-2 bg-red-500 h-max w-max text-sm';
+      removeBtn.textContent='Remove';
       removeBtn.onclick =() => removeFavorite(quot);
       li.appendChild(removeBtn);
       favoriteQuoteList.appendChild(li);
@@ -263,7 +275,8 @@ function savetoFavorite() {
         favoriteQuotes.push(favQuote);
         console.log(favQuote)
         updatedCatagory()
-        favoriteIcon.classList.add("text-red-600");
+        favoriteIcon.classList.add("text-red-600");  
+        displayFavority()
    
 }
 
@@ -271,12 +284,15 @@ function removeFavorite(quote){
     favoriteQuotes = favoriteQuotes.filter(fav =>fav !== quote)
     console.log(favoriteQuotes)
     updatedCatagory()
+
       favoriteIcon.classList.remove("text-red-600")  
+      displayFavority()
 }
 
 clearFavority.addEventListener(("click"), () => {
   favoriteQuotes =[];
-  updatedCatagory()
+  updatedCatagory();
+  displayFavority();
   favoriteIcon.classList.remove("text-red-600")
 })
 

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-widthinitial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="output.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -14,40 +14,39 @@
 
 <body class="overflow-x-hidden scroll-smooth">
 
-  <nav class="bg-slate-400  py-6 h-22   px-10 z-50 md:flex items-center justify-center h-24">
-    <div class=" md:items-start md:h-full w-full md:basis-1/6 flex justify-between">
+  <nav class="bg-slate-400  py-3 h-20   px-10 z-50 mdet:flex items-center justify-center ">
+    <div class="w-full md:basis-1/2 flex justify-between">
       
-      <a href="#displayallFavorite" class="py-3 md:pb-0 md:pt-5 px-10 text-2xl text-white cursor-pointer hover:text-slate-200 duration-200" id="display" ><i class="fas fa-heart md:text-3xl" ></i></a>
-      <div class="md:hidden"><i class="fa fa-list-ul py-3 px-10 text-2xl text-white cursor-pointer catagory hover:text-slate-200 duration-200 
-          " ></i></div>
+      <a href="#displayman" class="py-3 px-10 text-2xl text-white cursor-pointer " id="display" ><i class="fas fa-heart" ></i></a>
+      <div class="mdet:hidden"><i class="fa fa-list-ul py-3 px-10 text-2xl text-white cursor-pointer catagory "
+          aria-hidden="true"></i></div>
     </div>
     <form action="" id="quoteSelected"
-      class="md:static flex font-quote md:justify-between md:gap-3 gap-6 md:flex-row-reverse md:basis-3/4 lg:basis-[80%] lg:text-xl absolute top-24 right-[-100%] right-0 duration-500 transition-dire ease-in-out z-50 flex-col   h-max md:h-0 md:bg-transparent bg-slate-100  w-[50vh] text-center p-10 shadow-2xl shadow-slate-800 md:shadow-none md:justify-between">
+      class="mdet:static flex font-quote mdet:justify-between mdet:gap-3 gap-6 mdet:flex-row-reverse md:basis-1/2 lg:basis-3/4 lg:text-xl absolute top-20 right-[-100%] right-0 duration-500 transition-dire ease-in-out z-50 flex-col mdet:h-max h-screen mdet:bg-transparent bg-slate-100  w-[50vh] text-center p-10 shadow-2xl shadow-slate-800 mdet:shadow-none">
 
       <input type="radio" name="catagory" class="hidden " id="success" value="success" checked>
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300"
+        class="p-4 mdet:p-0 mdet:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] mdet:border-none shadow-lg mdet:shadow-none mdet:text-white font-semibold  duration-300"
         for="success">Success</label>
 
       <input type="radio" name="catagory" class="hidden" id="motivational" value="motivational">
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300"
+        class="p-4 mdet:p-0 mdet:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] mdet:border-none shadow-lg mdet:shadow-none mdet:text-white font-semibold  duration-300"
         for="motivational"> Motivational</label>
 
       <input type="radio" name="catagory" class="hidden" id="programming" value="programming">
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300"
+        class="p-4 mdet:p-0 mdet:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] mdet:border-none shadow-lg mdet:shadow-none mdet:text-white font-semibold  duration-300"
         for="programming"> Programming</label>
 
-     
+      <input type="radio" name="catagory" class="hidden" id="All" value="All">
+      <label
+        class="p-4 mdet:p-0 mdet:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] mdet:border-none shadow-lg mdet:shadow-none mdet:text-white font-semibold  duration-300"
+        for="All"> All</label>
       <input type="radio" name="catagory" class="hidden" id="favorite" value="favorite">
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold md:bg-transparent duration-300"
+        class="p-4 mdet:p-0 mdet:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] mdet:border-none shadow-lg mdet:shadow-none mdet:text-white font-semibold  duration-300"
         for="favorite">Favorite </label>
-        <input type="radio" name="catagory" class="hidden" id="All" value="All">
-        <label
-          class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300"
-          for="All"> All</label>
     </form>
   </nav>
 
@@ -155,17 +154,17 @@
 
 
 
-  <div id="displayallFavorite" class="hidden z-50 flex justify-center max-w-1/2 mx-auto gap-8 flex-col pt-6 pb-4 px-10 container ">
-   <h2 class="text-center text-2xl font-quote font-bold"> Favorite Quotes</h2>
-    <ul class="fav-list grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3" id="favoriteman">
+  <div id="displayman" class="z-50 flex justify-center  gap-8 flex-col py-10">
+
+    <ul class="fav-list flex flex-col gap-6" id="favorite">
      
     </ul>
     <button
       class="clearFavority px-10 py-2 font-quote font-bold bg-red-500 text-white text-2xl rounded-2xl w-max mx-auto duration-300 hover:bg-red-700">Clear
     </button>
 
-</div>
-  <script src="script.js"></script>
+
+  <!-- <script src="script.js"></script> -->
 </body>
 
 </html>

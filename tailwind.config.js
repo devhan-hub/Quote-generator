@@ -17,6 +17,13 @@ module.exports = {
       boxShadow:{
         boxshadow:"0 0 0 15px rgba(0,0,0,0.1)",
       },
+      screens:{
+        mdet:'550px',
+        
+      },
+      transitionProperty:{
+        dire:"top, left,right",
+      },
 
     },
   },
