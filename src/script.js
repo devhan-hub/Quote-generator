@@ -31,13 +31,13 @@ applySelectedStyle(initialSelectedRadio);
 //  for label 
 function resetLabels() {
   labels.forEach(label => {
-    label.classList.remove('bg-[#ed9d09]', 'text-white','md:text-[#ed9d09]');
+    label.classList.remove('bg-[#ff6f61]', 'text-white','md:text-[#ed9d09]');
     label.classList.add('text-black', 'bg-white' , 'md:text-white');
   });
 }
 function applySelectedStyle(selectedRadio) {
   const selectedLabel = document.querySelector(`label[for="${selectedRadio.id}"]`);
-  selectedLabel.classList.add('bg-[#ed9d09]', 'text-white' ,'md:text-[#ed9d09]');
+  selectedLabel.classList.add('bg-[#ff6f61]', 'text-white' ,'md:text-[#ed9d09]');
   selectedLabel.classList.remove('text-black', 'bg-white', 'md:text-white');
 };
 
@@ -49,10 +49,13 @@ displayQuote();
 console.log(allQuoteObject)
 
 // related to display function
-
+caticon.addEventListener(("click"),() => {
+   quoteCatagory.classList.toggle("right-[-100%]");
+})
 
 display.addEventListener(("click"),()=>{
   document.getElementById("displayallFavorite").classList.toggle("hidden");
+  display.classList.toggle("text-[#ff6f61]")
   
 })
 
@@ -245,7 +248,7 @@ function displayFavority() {
       let li = document.createElement("li");
       li.textContent = `${quot.quote}, \"${quot.type}\"`;
 
-     li.className = 'gap-5 flex px-2 py-4 bg-slate-500 rounded-lg text-white text-lg font-quote';
+     li.className = 'gap-5 flex px-2 py-4 shadow-3xl bg-slate-500 text-white text-lg font-quote';
       const removeBtn = document.createElement("button");
       removeBtn.className ='self-center rounded-2xl duration-300 hover:bg-red-700 ease-in-out px-3 py-2 bg-red-500 h-max w-max text-sm';
       removeBtn.textContent='Remove';

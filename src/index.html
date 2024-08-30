@@ -12,88 +12,83 @@
   <title>Quote Generator</title>
 </head>
 
-<body class="overflow-x-hidden scroll-smooth">
+<body class="overflow-x-hidden scroll-smooth bg-gradient-to-tr from-[#1a237e] to-#7e57c2">
 
-  <nav class="bg-slate-400  py-6 h-22   px-10 z-50 md:flex items-center justify-center h-24">
+  <nav class="bg-[#2c3e50]  py-6 h-22   px-10 z-50 md:flex items-center justify-center h-24">
     <div class=" md:items-start md:h-full w-full md:basis-1/6 flex justify-between">
-      
-      <a href="#displayallFavorite" class="py-3 md:pb-0 md:pt-5 px-10 text-2xl text-white cursor-pointer hover:text-slate-200 duration-200" id="display" ><i class="fas fa-heart md:text-3xl" ></i></a>
-      <div class="md:hidden"><i class="fa fa-list-ul py-3 px-10 text-2xl text-white cursor-pointer catagory hover:text-slate-200 duration-200 
-          " ></i></div>
+
+      <a href="#displayallFavorite"
+        class="py-3 md:pb-0 md:pt-5 px-10 text-2xl text-[#d3d3d3] cursor-pointer hover:text-slate-200 duration-200"
+        id="display"><i class="fas fa-heart  md:text-3xl"></i></a>
+      <div class="md:hidden"><i class="fa fa-list-ul py-3  text-[#ff6f61] px-10 text-2xl  cursor-pointer catagory hover:text-slate-200 duration-200 
+          "></i></div>
     </div>
     <form action="" id="quoteSelected"
-      class="md:static flex font-quote md:justify-between md:gap-3 gap-6 md:flex-row-reverse md:basis-3/4 lg:basis-[80%] lg:text-xl absolute top-24 right-[-100%] right-0 duration-500 transition-dire ease-in-out z-50 flex-col   h-max md:h-0 md:bg-transparent bg-slate-100  w-[50vh] text-center p-10 shadow-2xl shadow-slate-800 md:shadow-none md:justify-between">
+      class="md:static flex font-quote md:justify-between md:gap-3 gap-6 md:flex-row-reverse md:basis-3/4 lg:basis-[80%] lg:text-xl absolute top-24 right-[-100%] right-0 duration-500 transition-dire ease-in-out z-50 flex-col   h-max md:h-0 md:bg-transparent bg-[#2c3e50]  w-[50vh] text-center p-10 shadow-2xl shadow-slate-800 md:shadow-none ">
 
       <input type="radio" name="catagory" class="hidden " id="success" value="success" checked>
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300"
+        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none bg-white md:text-white font-semibold  md:bg-transparent duration-300"
         for="success">Success</label>
 
       <input type="radio" name="catagory" class="hidden" id="motivational" value="motivational">
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300"
+        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300 bg-white "
         for="motivational"> Motivational</label>
 
       <input type="radio" name="catagory" class="hidden" id="programming" value="programming">
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300"
+        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300 bg-white "
         for="programming"> Programming</label>
 
-     
+
       <input type="radio" name="catagory" class="hidden" id="favorite" value="favorite">
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold md:bg-transparent duration-300"
+        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold md:bg-transparent duration-300 bg-white "
         for="favorite">Favorite </label>
-        <input type="radio" name="catagory" class="hidden" id="All" value="All">
-        <label
-          class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300"
-          for="All"> All</label>
+      <input type="radio" name="catagory" class="hidden" id="All" value="All">
+      <label
+        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300 bg-white "
+        for="All"> All</label>
     </form>
   </nav>
 
 
-  <div class="  main flex flex-col md:flex-row justify-center items-center h-screen p-8 pt-12 gap-2 md:gap-4">
-    <!--  catagory Radio Button -->
+
 
 
     <!-- Quote display -->
     <div
-      class="relative qote-box px-10 py-12 box-content max-h-max min-w-[70vw] h-[80vh] rounded-xl space-y-6 text-white cursor-pointer bg-custom-radial">
+      class=" qote-box px-10 pt-28 box-content max-h-max max-w-[70vh] h-[80vh] rounded-xl  text-white cursor-pointer items-center justify-between space-y-12 md:mx-auto md:justify-center">
 
-      <div id="add" class=" absolute right-0 top-0 p-4  lg:p-10 group flex  items-center gap-2 ">
-        <p
-          class="text-md w-max px-4 md:px-6 py-2 md:bg-white md:text-[#f4c060] rounded-lg md:group-hover:bg-[#ed9d09] scale-0 group-hover:bg-[#ed9d09] group-hover:text-white group-hover:scale-100  md:group-hover:text-white  duration-700 md:duration-500 md:scale-100 md:opacity-100 group-hover:opacity-100 -mt-3">
-          Add Quote
-        </p>
-        <div class="md:hidden"><i class="fa fa-plus md:fa-none text-3xl"></i></div>
-      </div>
-      <div id="delet" class=" absolute left-0 bottom-0 p-4 group flex gap-2 items-center ">
-        <div class="md:hidden"><i class="fa fa-times text-3xl"></i></div>
-        <p
-          class="text-md w-max px-4 md:px-6 py-2 md:bg-white md:text-[#f4c060] rounded-lg md:group-hover:bg-[#ed9d09] scale-0 group-hover:bg-[#ed9d09] group-hover:text-white group-hover:scale-100  md:group-hover:text-white  duration-700 md:duration-500 md:scale-100 md:opacity-100 group-hover:opacity-100 -mt-3">
-          Delete Quote
-        </p>
-      </div>
-
-
+      <div class="space-y-8">
       <div class="icon1 "><i class="fa fa-quote-left  text-4xl"></i></div>
 
-      <blockquote id="quotee" class="font-quote leading-10   text-center text-xl md:text-2xl lg:text-3xl">
+      <blockquote id="quotee" class="font-quote leading-10  text-start text-xl ">
       </blockquote>
+
       <div class="auto-line flex items-center justify-end border-blue-500 gap-3 flex-wrap"> <span
           class="w-10 h-[2px] bg-commen "></span>
-        <p id="autho" class="lg:text-lg author italic"></p>
+        <p id="autho" class="lg:text-lg author font-bold text-[#f4c060] italic text-[18px]"></p>
       </div>
+    </div>
+      <div class=" button text-center mx-auto flex  gap-8 text-2xl ">
+        <i
+          class="fas text-[#ff6f61] bg-[#ffe4e1] p-3 w rounded-full  hover:bg-[#ff6f61] hover:text-white duration-300  fa-sync"
+          id="new"></i>
+        <i
+          class="fa fa-heart data-quote p-3  rounded-full  hover:bg-[#ff6f61] hover:text-white duration-300  bg-[#ffe4e1] text-[#ff6f61]  fav  "></i>
+        <i
+          class="fa fa-plus text-[#ff6f61] md:fa-none  p-3 rounded-full  hover:bg-[#ff6f61] hover:text-white duration-300  bg-[#ffe4e1]"></i>
 
-      <div class="icon2 flex justify-end"><i class="fa fa-quote-right text-4xl "></i></div>
+        <i
+          class="fa fa-minus text-[#ff6f61]  p-3  rounded-full  hover:bg-[#ff6f61] hover:text-white duration-300  bg-[#ffe4e1]"></i>
 
-
-      <div class=" button text-center mx-auto flex justify-center gap-8 text-2xl "><i class="fas fa-sync"
-          id="new"></i><i class="fa fa-heart data-quote  data-author fav  " aria-hidden="true"></i></div>
+      </div>
 
     </div>
 
-  </div>
+ 
 
 
 
@@ -103,7 +98,7 @@
 
     <form action=""
       class="cursor-text overflow-hidden bg-white pt-16 pb-8 px-8 space-y-8 shadow-boxshadow shadow-[#f4c060] max-w-[80vh] mx-auto rounded-xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <i class="fa fa-times absolute top-0 right-0  z-50 text-xl p-3 px-6 bg-[#ed9d09] text-white cursor-pointer rounded-bl-md hover:bg-[#8a5b05] duration-300"
+      <i class="fa fa-times absolute top-0 right-0 text-[#ff6f61] z-50 text-xl p-3 px-6 bg-[#ed9d09]  cursor-pointer rounded-bl-md hover:bg-[#8a5b05] duration-300"
         aria-hidden="true" id="formClose"></i>
 
 
@@ -128,12 +123,12 @@
 
       </div>
       <div id="errorBox" class="hidden space-y-2 items-center pl-8  pr-2 text-[#ff0000]  font-bold capitalize italic  ">
-        <i class="fa fa-times-circle text-lg " aria-hidden="true"></i>
+        <i class="fa fa-times-circle text-[#ff6f61] text-lg " aria-hidden="true"></i>
         <p id="errorMessage" class="inline-block">no</p>
       </div>
       <div id="successBox"
         class="hidden space-y-2 items-center pl-8  pr-2 text-[#ed9d09]  font-bold capitalize italic ">
-        <i class="fa fa-check text-lg"></i>
+        <i class="fa fa-check text-[#ff6f61] text-lg"></i>
         <p id="successMessage" class="inline-block">no</p>
       </div>
 
@@ -142,10 +137,10 @@
           class="  px-8 py-2 text-[#ed9d09] shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#ed9d09] hover:text-white duration-300">Submit</button>
 
         <button type="submit " id="Yes"
-          class=" hidden px-8 py-2 text-[#ed9d09] shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#ed9d09] hover:text-white duration-300">Yes</button>
+          class=" hidden px-8 py-2 text-white shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#dc3545] hover:text-white duration-300">Yes</button>
 
         <button type="submit " id="No"
-          class="hidden px-8 py-2 text-[#ed9d09] shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#ed9d09] hover:text-white duration-300">No</button>
+          class="hidden px-8 py-2 text=white shadow-md rounded-lg border-2 border-[#ed9d09] text-lg hover:bg-[#dc3545] hover:text-white duration-300">No</button>
 
       </div>
     </form>
@@ -155,16 +150,17 @@
 
 
 
-  <div id="displayallFavorite" class="hidden z-50 flex justify-center max-w-1/2 mx-auto gap-8 flex-col pt-6 pb-4 px-10 container ">
-   <h2 class="text-center text-2xl font-quote font-bold"> Favorite Quotes</h2>
+  <div id="displayallFavorite"
+    class="hidden z-50 flex justify-center max-w-1/2 mx-auto gap-8 flex-col pt-0 pb-4 px-10 container ">
+    <h2 class="text-center text-[#f4c060] font-extrabold text-2xl font-quote "> Favorite Quotes</h2>
     <ul class="fav-list grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3" id="favoriteman">
-     
+
     </ul>
     <button
-      class="clearFavority px-10 py-2 font-quote font-bold bg-red-500 text-white text-2xl rounded-2xl w-max mx-auto duration-300 hover:bg-red-700">Clear
+      class="clearFavority px-10 py-2 font-quote font-bold bg-[#dc3545] text-white text-2xl rounded-2xl w-max mx-auto duration-300 hover:bg-red-700">Clear All Favorite
     </button>
 
-</div>
+  </div>
   <script src="script.js"></script>
 </body>
 
