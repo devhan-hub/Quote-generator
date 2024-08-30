@@ -18,7 +18,9 @@ const submit = document.getElementById("submit");
 
 let allQuoteObject = JSON.parse(localStorage.getItem("allQuote"));
 console.log(allQuoteObject)
+let favoriteQuotes =allQuoteObject.find(catagory => catagory.id === "favorite");
 
+favoriteQuotes = favoriteQuotes.quotes;
 
 
 // console.log(favoriteQuotes)
@@ -70,7 +72,13 @@ function displayQuote() {
   blockquote.textContent = selectedQuotes[selectedQuoteIndex].quote;
   authorofQuote.textContent = selectedQuotes[selectedQuoteIndex].author;
 
-  
+  if(favoriteQuotes.find(favorite => favorite.quote === blockquote.textContent && favorite.author ===  authorofQuote.textContent))
+     {
+      favoriteIcon.classList.add("text-red-600")
+     }
+     else {
+      favoriteIcon.classList.remove("text-red-600")
+     }
   
 }
 
@@ -180,7 +188,12 @@ function updatedCatagory() {
     localStorage.setItem("allQuote", allQuoteString);
     console.log("Updated allQuoteObject:", allQuoteObject);
   }
-  
+   catagoryToUpdate = allQuoteObject.find(catagory => catagory.id === 'favorite');
+   if (catagoryToUpdate) {
+    catagoryToUpdate.quotes =favoriteQuotes;
+    const allQuoteString = JSON.stringify(allQuoteObject);
+    localStorage.setItem("allQuote", allQuoteString);
+  }
 
 }
 
@@ -217,6 +230,55 @@ function closeQuoteForm() {
   deletNo.classList.add("hidden");
 };
 //
+function displayFavority() {
+     favoriteQuoteList.innerHTML = ""
+     favoriteQuotes.quotes.forEach(quot => {
+      const li = document.createElement("li");
+      li.textContent= quot;
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent='remove';
+      removeBtn.onclick =() => removeFavorite(quot);
+      li.appendChild(removeBtn);
+      favoriteQuoteList.appendChild(li);
+     })
+}
+
+favoriteIcon.addEventListener(("click") ,()=> {
+  let AddToFavorite = favoriteQuotes.find(AddToFavorite => AddToFavorite.id === selectedQuotes[selectedQuoteIndex].id && AddToFavorite.type === selectedCatagory.id )
+  if(AddToFavorite){
+    removeFavorite(AddToFavorite)
+  }
+  else {
+    savetoFavorite()
+  }
+
+})
+
+function savetoFavorite() {
+ let favQuote =  selectedQuotes[selectedQuoteIndex];
+ favQuote ={
+        ...selectedQuotes[selectedQuoteIndex],
+          type:selectedCatagory.id
+       }
+        favoriteQuotes.push(favQuote);
+        console.log(favQuote)
+        updatedCatagory()
+        favoriteIcon.classList.add("text-red-600");
+   
+}
+
+function removeFavorite(quote){
+    favoriteQuotes = favoriteQuotes.filter(fav =>fav !== quote)
+    console.log(favoriteQuotes)
+    updatedCatagory()
+      favoriteIcon.classList.remove("text-red-600")  
+}
+
+clearFavority.addEventListener(("click"), () => {
+  favoriteQuotes =[];
+  updatedCatagory()
+  favoriteIcon.classList.remove("text-red-600")
+})
 
 
 
