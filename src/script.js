@@ -288,17 +288,22 @@ function displayFavority() {
       let div = document.createElement("div");
       let p = document.createElement("p");
       let p2 = document.createElement('p');
+      let p3 = document.createElement('p');
       p2.textContent = quot.quote;
       p.textContent = quot.type;
+      p3.textContent = "By--" + quot.author;
       div.className = 'flex flex-col items-start justify-center gap-2'
-      p.className = 'lg:text-lg  author text-[#f4c060] italic text-[15px]'
+      p.className = 'lg:text-lg font-bold  text-[#f4c060]  text-[15px]'
+       p3.className = 'lg:text-lg font-author text-[#f4c060] italic text-[15px]'
       li.className = 'gap-5 flex px-4 items-center justify-between px-2 py-4 shadow-3xl  text-gray-800 text-lg font-quote bg-white';
       const removeBtn = document.createElement("button");
       removeBtn.className = 'self-center rounded-2xl duration-300 hover:bg-red-700 ease-in-out px-3 py-2 bg-red-500 h-max w-max text-white text-sm';
       removeBtn.textContent = 'Remove';
       removeBtn.onclick = () => removeFavorite(quot);
       div.appendChild(p2);
+      div.appendChild(p3)
       div.appendChild(p)
+      
       li.appendChild(div);
       li.appendChild(removeBtn);
 
