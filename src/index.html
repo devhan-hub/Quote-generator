@@ -12,49 +12,49 @@
   <title>Quote Generator</title>
 </head>
 
-<body class="overflow-x-hidden scroll-smooth bg-gradient-to-tr from-[#1a237e] to-#7e57c2">
+<body class="overflow-x-hidden scroll-smooth bg-[#fff0e6]">
 <div class="main">
-  <nav class="bg-[#2c3e50]  py-6 h-22   px-10 z-50 md:flex items-center justify-center h-24">
+  <nav class="shadow-xl py-6 h-22   px-10 z-50 md:flex items-center justify-center h-24">
     <div class=" md:items-start md:h-full w-full md:basis-1/6 flex justify-between">
 
       <a href="#displayallFavorite"
-        class="py-3 md:pb-0 md:pt-5 px-10 text-2xl text-[#d3d3d3] cursor-pointer hover:text-slate-200 duration-200"
-        id="display"><i class="fas fa-heart  md:text-3xl"></i></a>
-      <div class="md:hidden"><i class="fa fa-list-ul py-3  text-[#ff6f61] px-10 text-2xl  cursor-pointer catagory hover:text-slate-200 duration-200 
+        class="py-3  font-semibold md:pb-0 md:pt-5 px-10 text-xl text-[#eda218] cursor-pointer hover:text-[#da981f] duration-200"
+        id="display">All Fav</a>
+      <div class="md:hidden"><i class="fa fa-list-ul py-3 font-semibold text-[#eda218]  px-10 text-2xl  cursor-pointer catagory hover:text-[#da981f] duration-200 
           "></i></div>
     </div>
     <form action="" id="quoteSelected"
-      class="md:static flex font-quote md:justify-between md:gap-3 gap-6 md:flex-row-reverse md:basis-3/4 lg:basis-[80%] lg:text-xl absolute top-24 right-[-100%] right-0 duration-500 transition-dire ease-in-out z-50 flex-col   h-max md:h-0 md:bg-transparent bg-[#2c3e50]  w-[50vh] text-center p-10 shadow-2xl shadow-slate-800 md:shadow-none ">
+      class="md:static flex font-quote md:justify-between md:gap-3 gap-6 md:flex-row-reverse md:basis-3/4 lg:basis-[80%] lg:text-xl absolute top-24 right-[-100%] right-0 duration-500 transition-dire ease-in-out z-50 flex-col   h-max md:h-0 md:bg-transparent  bg-[#fff0e6]  w-[50vh] text-center p-10 shadow-2xl shadow-slate-800 md:shadow-none ">
 
       <input type="radio" name="catagory" class="hidden " id="success" value="success" checked>
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none bg-white md:text-white font-semibold  md:bg-transparent duration-300"
+        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none bg-white md:text-[#eda218] font-semibold  md:bg-transparent duration-300"
         for="success">Success</label>
 
       <input type="radio" name="catagory" class="hidden" id="motivational" value="motivational">
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300 bg-white "
+        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-[#eda218] font-semibold  md:bg-transparent duration-300 bg-white "
         for="motivational"> Motivational</label>
 
       <input type="radio" name="catagory" class="hidden" id="programming" value="programming">
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300 bg-white "
+        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-[#eda218] font-semibold  md:bg-transparent duration-300 bg-white "
         for="programming"> Programming</label>
 
 
       <input type="radio" name="catagory" class="hidden" id="favorite" value="favorite">
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold md:bg-transparent duration-300 bg-white "
+        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-[#eda218] font-semibold md:bg-transparent duration-300 bg-white "
         for="favorite">Favorite </label>
       <input type="radio" name="catagory" class="hidden" id="All" value="All">
       <label
-        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-white font-semibold  md:bg-transparent duration-300 bg-white "
+        class="p-4 md:p-0 md:rounded-none rounded-xl cursor-pointer  border-2 border-[#f4c060] md:border-none shadow-lg md:shadow-none md:text-[#eda218] font-semibold  md:bg-transparent duration-300 bg-white "
         for="All"> All</label>
     </form>
   </nav>
     <!-- Quote display -->
-    <div
-      class="  relative  qote-box px-10 pt-28 box-content max-h-max max-w-[70vh] h-[80vh] rounded-xl  text-white cursor-pointer items-center justify-between space-y-12 md:mx-auto md:justify-center blockc">
+    <div id="quotedisplaybel"
+      class=" relative bg-[#f4c060]  qote-box p-10 pt-28 box-content max-h-max max-w-[70vh] mx-auto mt-10 rounded-xl  text-[#fff0e6] cursor-pointer items-center justify-between space-y-12 md:mx-auto md:justify-center blockc">
 
       <div class="space-y-8">
       <div class="icon1 "><i class="fa fa-quote-left  text-4xl"></i></div>
@@ -67,17 +67,17 @@
         <p id="autho" class="lg:text-lg author font-bold text-[#f4c060] italic text-[18px]"></p>
       </div>
     </div>
-      <div class=" button text-center mx-auto flex  gap-8 text-2xl ">
+      <div class=" button text-center mx-auto flex items-center gap-8 text-2xl ">
         <i
-          class="fas text-[#ff6f61] bg-[#ffe4e1] p-3 w rounded-full  hover:bg-[#ff6f61] hover:text-white duration-300  fa-sync"
+          class="fas text-[#eda218] bg-white p-3 w rounded-full  hover:bg-transparent shadow-lg hover:text-white duration-300  fa-sync"
           id="new"></i>
         <i
-          class="fa fa-heart data-quote p-3  rounded-full  hover:bg-[#ff6f61] hover:text-white duration-300  bg-[#ffe4e1] text-[#ff6f61]  fav  "></i>
+          class="fa fa-heart data-quote p-3  rounded-full  hover:bg-transparent shadow-lg hover:text-white duration-300  bg-white text-[#eda218]  fav  "></i>
         <i id="add"
-          class="fa fa-plus text-[#ff6f61] md:fa-none  p-3 rounded-full  hover:bg-[#ff6f61] hover:text-white duration-300  bg-[#ffe4e1]"></i>
+          class="fa fa-plus text-[#eda218] md:fa-none  p-3 rounded-full  hover:bg-transparent shadow-lg hover:text-white duration-300  bg-white"></i>
 
         <i id="delet"
-          class="fa fa-minus text-[#ff6f61]  p-3  rounded-full  hover:bg-[#ff6f61] animate-boun hover:text-white duration-300  bg-[#ffe4e1]"></i>
+          class="fa fa-minus text-[#eda218]  p-3 px-3.5 rounded-full  hover:bg-transparent shadow-lg animate-boun hover:text-white duration-300  bg-white"></i>
       </div>
     </div>
 
@@ -90,7 +90,7 @@
   <div id="userNewQuote" class="hidden  z-50 fixed h-screen w-screen   bg-neutral-500 cursor-pointer relative">
 
     <form action=""
-      class="cursor-text overflow-hidden bg-white pt-16 pb-8 px-8 space-y-8 shadow-2xl shadow-slate-800 max-w-[80vh] mx-auto rounded-xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-slate-700">
+      class="cursor-text overflow-hidden bg-white pt-16 pb-8 px-8 space-y-8 shadow-sm shadow-[#eda218] max-w-[80vh] mx-auto rounded-xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-[#eda218]">
       <i class="fa fa-times absolute top-0 right-0 text-white z-50 text-xl p-3 px-6 bg-[#ff6f61]  cursor-pointer rounded-bl-md hover:bg-[#8a5b05] duration-300"
         aria-hidden="true" id="formClose"></i>
 
@@ -147,16 +147,14 @@
   </div>
 
 
-
-
   <div id="displayallFavorite"
-    class="hidden z-50 flex justify-center max-w-1/2 mx-auto gap-8 flex-col pt-0 pb-4 px-10 container ">
+    class="hidden z-50 flex justify-center max-w-1/2 mx-auto gap-8 flex-col pt-0 pb-4 px-10 container mt-20">
     <h2 class="text-center text-[#f4c060] font-extrabold text-2xl font-quote "> Favorite Quotes</h2>
     <ul class="fav-list grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3" id="favoriteman">
 
     </ul>
     <button
-      class="clearFavority px-10 py-2 font-quote font-bold bg-[#dc3545] text-white text-2xl rounded-2xl w-max mx-auto duration-300 hover:bg-red-700">Clear All Favorite
+      class="clearFavority px-10 py-2 font-quote font-bold bg-[#dc3545] text-white text-2xl rounded-lg w-max mx-auto duration-300 hover:bg-red-700">Clear All 
     </button>
 
   </div>
