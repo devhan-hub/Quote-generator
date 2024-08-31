@@ -24,6 +24,15 @@ module.exports = {
       transitionProperty:{
         dire:"top, left,right",
       },
+      animation:{
+        'block':'block .5s ease-in-out forwards',
+      },
+      keyframes:{
+           block:{
+            '0%':{left:'-10px', opacity:'0'},
+            '100%':{left:'0px' , opacity:'1'}
+           }
+      },
 
     },
   },

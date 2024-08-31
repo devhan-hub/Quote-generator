@@ -94,6 +94,11 @@ function displayQuote() {
 
      }
      displayFavority()
+     const bloch = document.querySelector(".blockc");
+     bloch.classList.remove("animate-block");
+
+     void bloch.offsetWidth;
+     bloch.classList.add("animate-block");
 }
   displayQuote();
 newButton.addEventListener('click', displayQuote);
@@ -153,7 +158,6 @@ deletQuotevar.addEventListener("click", () => {
   setforAddDelet(2)
   document.querySelector(".added-one").textContent = selectedQuotes[selectedQuoteIndex].quote;
   document.querySelector(".added-two").textContent = selectedQuotes[selectedQuoteIndex].author;
-  
 
 })
 
